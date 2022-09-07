@@ -7,7 +7,7 @@ const Dashboard = () => {
     <>
       <div className="flex h-24 items-center w-full">
         <div className="justify-start flex items-center h-12 grow">
-          dashboard
+          dashboard --- please add some data as there is no data in your account then try filter function and other functions.
         </div>
         <AddModal />
       </div>
