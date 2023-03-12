@@ -4,7 +4,7 @@ import { auth } from "../auth/firebase";
 const fetchExpense = async () => {
   const userIdToken = (await auth?.currentUser?.getIdToken()) ?? undefined;
   const expense = await axios({
-    url: "http://localhost:3002/expense/",
+    url: "https://lime-tame-coyote.cyclic.app/expense/",
     method: "GET",
     headers: { Authorization: userIdToken },
   });
@@ -14,7 +14,7 @@ const fetchExpense = async () => {
 const createExpense = async (payload) => {
   const userIdToken = (await auth?.currentUser?.getIdToken()) ?? undefined;
   const expense = await axios({
-    url: "http://localhost:3002/expense/add",
+    url: "https://lime-tame-coyote.cyclic.app/expense/add",
     method: "POST",
     headers: { Authorization: userIdToken },
     data: payload,
@@ -25,7 +25,7 @@ const createExpense = async (payload) => {
 const deleteExpense = async (_id) => {
   const userIdToken = (await auth?.currentUser?.getIdToken()) ?? undefined;
   const expense = await axios({
-    url: `http://localhost:3002/expense/delete/${_id}`,
+    url: `https://lime-tame-coyote.cyclic.app/expense/delete/${_id}`,
     method: "DELETE",
     headers: { Authorization: userIdToken },
   });
