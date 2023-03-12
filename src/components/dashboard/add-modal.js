@@ -73,6 +73,7 @@ const AddModal = () => {
     } catch (error) {
       setError(error?.message);
     }
+    setIsModalOpen(!isModalOpen);
   };
 
   const handleAddExpense = async () => {
@@ -90,6 +91,7 @@ const AddModal = () => {
       console.log("here");
       setError(error?.message);
     }
+    setIsModalOpen(!isModalOpen);
   };
 
   const openModal = () => {

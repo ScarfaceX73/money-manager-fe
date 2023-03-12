@@ -4,7 +4,7 @@ import { auth } from "../auth/firebase";
 const fetchExpense = async () => {
   const userIdToken = (await auth?.currentUser?.getIdToken()) ?? undefined;
   const expense = await axios({
-    url: "https://money-manager-project-be.herokuapp.com/expense",
+    url: "http://localhost:3002/expense/",
     method: "GET",
     headers: { Authorization: userIdToken },
   });
@@ -14,7 +14,7 @@ const fetchExpense = async () => {
 const createExpense = async (payload) => {
   const userIdToken = (await auth?.currentUser?.getIdToken()) ?? undefined;
   const expense = await axios({
-    url: "https://money-manager-project-be.herokuapp.com/expense/add",
+    url: "http://localhost:3002/expense/add",
     method: "POST",
     headers: { Authorization: userIdToken },
     data: payload,
@@ -22,24 +22,14 @@ const createExpense = async (payload) => {
   return expense;
 };
 
-const updateExpense = async (_id) => {
-  const userIdToken = (await auth?.currentUser?.getIdToken()) ?? undefined;
-  const expense = await axios({
-    url: `https://money-manager-project-be.herokuapp.com/expense/update/${_id}`,
-    method: "PUT",
-    headers: { Authorization: userIdToken },
-  });
-  return expense;
-};
-
 const deleteExpense = async (_id) => {
   const userIdToken = (await auth?.currentUser?.getIdToken()) ?? undefined;
   const expense = await axios({
-    url: `https://money-manager-project-be.herokuapp.com/expense/delete/${_id}`,
+    url: `http://localhost:3002/expense/delete/${_id}`,
     method: "DELETE",
     headers: { Authorization: userIdToken },
   });
   return expense;
 };
 
-export { fetchExpense, createExpense, updateExpense, deleteExpense };
+export { fetchExpense, createExpense, deleteExpense };

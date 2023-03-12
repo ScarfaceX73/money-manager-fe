@@ -71,6 +71,7 @@ const Cards = () => {
     } catch (error) {
       console.log(error);
     }
+    fetchData();
   };
 
   useEffect(() => {
@@ -186,7 +187,7 @@ const Cards = () => {
     catch (error) {
       console.log(error);
     }
-
+    fetchData();
   };
 
   return (
@@ -245,7 +246,7 @@ const Cards = () => {
       </div>
       <div>
         <div>
-          <TableContainer component={Paper}>
+          <TableContainer component={Paper} style={{ borderRadius: "0px" }}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
               <TableHead>
                 <TableRow>
