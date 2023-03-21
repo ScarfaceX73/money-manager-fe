@@ -71,7 +71,6 @@ const Cards = () => {
     } catch (error) {
       console.log(error);
     }
-    fetchData();
   };
 
   useEffect(() => {
@@ -159,6 +158,7 @@ const Cards = () => {
         alert("Please fill the filter to get the data");
       }
     };
+    fetchData();
   }
 
   const tData = useMemo(() => {

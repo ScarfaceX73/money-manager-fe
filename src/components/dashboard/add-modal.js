@@ -7,8 +7,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
 import * as React from "react";
 import AmountToAdd from "./amount";
-import { createIncome } from "../../services/income";
-import { createExpense } from "../../services/expense";
+import { createIncome, fetchIncome } from "../../services/income";
+import { createExpense, fetchExpense } from "../../services/expense";
 import dayjs from "dayjs";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
@@ -60,6 +60,15 @@ const AddModal = () => {
   const [source, setSource] = useState({});
   const [error, setError] = useState(undefined);
 
+  const fetchData = async () => {
+    try {
+      await fetchIncome();
+      await fetchExpense();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleAddIncome = async () => {
     const payload = {
       startDate: startDate,
@@ -73,6 +82,7 @@ const AddModal = () => {
     } catch (error) {
       setError(error?.message);
     }
+    fetchData()
     setIsModalOpen(!isModalOpen);
   };
 
@@ -91,6 +101,7 @@ const AddModal = () => {
       console.log("here");
       setError(error?.message);
     }
+    fetchData()
     setIsModalOpen(!isModalOpen);
   };
 
