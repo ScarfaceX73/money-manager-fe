@@ -4,7 +4,8 @@ import { auth } from "../auth/firebase";
 const fetchIncome = async () => {
   const userIdToken = (await auth?.currentUser?.getIdToken()) ?? undefined;
   const income = await axios({
-    url: "https://lime-tame-coyote.cyclic.app/income/",
+    url: "https://money-manager-be-72sw.onrender.com/income/",
+    // url: "http://localhost:3002/income/",
     method: "GET",
     headers: { Authorization: userIdToken },
   });
@@ -14,7 +15,8 @@ const fetchIncome = async () => {
 const createIncome = async (payload) => {
   const userIdToken = (await auth?.currentUser?.getIdToken()) ?? undefined;
   const income = await axios({
-    url: "https://lime-tame-coyote.cyclic.app/income/add",
+    url: "https://money-manager-be-72sw.onrender.com/income/add",
+    // url: "http://localhost:3002/income/add",
     method: "POST",
     headers: { Authorization: userIdToken },
     data: payload,
@@ -25,7 +27,8 @@ const createIncome = async (payload) => {
 const deleteIncome = async (_id) => {
   const userIdToken = (await auth?.currentUser?.getIdToken()) ?? undefined;
   const income = await axios({
-    url: `https://lime-tame-coyote.cyclic.app/income/delete/${_id}`,
+    url: `https://money-manager-be-72sw.onrender.com/income/delete/${_id}`,
+    // url: `http://localhost:3002/income/delete/${_id}`,
     method: "DELETE",
     headers: { Authorization: userIdToken },
   });

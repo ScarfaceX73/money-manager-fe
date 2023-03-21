@@ -7,8 +7,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
 import * as React from "react";
 import AmountToAdd from "./amount";
-import { createIncome, fetchIncome } from "../../services/income";
-import { createExpense, fetchExpense } from "../../services/expense";
+import { createIncome } from "../../services/income";
+import { createExpense } from "../../services/expense";
 import dayjs from "dayjs";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
@@ -51,7 +51,7 @@ const incomeSrcOption = [
 
 Modal.setAppElement("#root");
 
-const AddModal = () => {
+const AddModal = ({ fetchData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [startDate, setStartDate] = useState(dayjs("2014-08-18T21:11:00"));
   const [workSpace, setWorkSpace] = useState({});
@@ -59,15 +59,6 @@ const AddModal = () => {
   const [amount, setAmount] = useState(0);
   const [source, setSource] = useState({});
   const [error, setError] = useState(undefined);
-
-  const fetchData = async () => {
-    try {
-      await fetchIncome();
-      await fetchExpense();
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const handleAddIncome = async () => {
     const payload = {

@@ -52,26 +52,23 @@ const workOptions = [
   { label: "Office", value: "office" },
 ];
 
-const Cards = () => {
-
-  const [tableData, setTableData] = useState([]);
-  const [filterData, setFilterData] = useState([]);
+const Cards = ({ tableData, setTableData, filterData, fetchData }) => {
   const [type, setType] = useState({});
   const [workSpace, setWorkSpace] = useState({});
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
-  const fetchData = async () => {
-    try {
-      const userIncome = await fetchIncome();
-      const userExpense = await fetchExpense();
-      const tempData = [...(userIncome ?? []), ...(userExpense ?? [])];
-      setFilterData(tempData);
-      setTableData(tempData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const userIncome = await fetchIncome();
+  //     const userExpense = await fetchExpense();
+  //     const tempData = [...(userIncome ?? []), ...(userExpense ?? [])];
+  //     setFilterData(tempData);
+  //     setTableData(tempData);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   useEffect(() => {
     fetchData();
